@@ -9,4 +9,12 @@ public interface MessageTree extends Message{
 	 * @return
 	 */
 	public Site getSender();
+	
+	
+	/**
+	 * Set the sender of the message
+	 * @return
+	 */
+	public void setSender(Site newsender);
+	
 }

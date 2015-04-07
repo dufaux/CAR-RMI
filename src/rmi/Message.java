@@ -10,12 +10,6 @@ public interface Message extends Serializable {
 	public String getContents();
 	
 	/**
-	 * Return the id of this message
-	 * @return
-	 */
-	public int getId();
-	
-	/**
 	 * Return the initiator of this message
 	 * @return
 	 */
