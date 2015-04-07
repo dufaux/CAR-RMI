@@ -5,20 +5,32 @@ import java.rmi.RemoteException;
 
 public interface Site extends Remote {
 	/**
-	 * Print the received message and send it to its surrounding.
+	 * Print the received message
+	 * 
 	 * @param message
 	 */
 	public void receiveMessage(Message message) throws RemoteException;
-	
+
 	/**
-	 * 
+	 * Sends a message to all the surrounding
 	 * @param message
+	 * @throws RemoteException
 	 */
 	public void sendMessage(Message message) throws RemoteException;
 
 	/**
 	 * Creates a message
+	 * 
 	 * @param message
+	 * @throws RemoteException
 	 */
 	public Message createMessage(String message) throws RemoteException;
+
+	/**
+	 * Returns the identification of this site
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 */
+	public String getId() throws RemoteException;
 }
