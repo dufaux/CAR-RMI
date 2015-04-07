@@ -7,6 +7,10 @@ import rmi.Site;
  */
 public class MessageTreeImpl implements MessageTree{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -108044260821572554L;
 	private Site initiator;
 	private Site sender;
 	private String content;

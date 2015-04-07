@@ -1,17 +1,21 @@
 package main;
 
+import java.rmi.AlreadyBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-import rmi.Site;
+import rmi.tree.SiteTree;
 import rmi.tree.SiteTreeImpl;
 
 public class mainCreateSite {
 
 	/**
 	 * @param args
+	 * @throws RemoteException 
+	 * @throws AlreadyBoundException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws RemoteException, AlreadyBoundException {
 		
 		//System.out.println(args[0]);
 		System.setProperty("java.rmi.server.hostname",args[0]);
