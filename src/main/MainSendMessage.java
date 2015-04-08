@@ -8,6 +8,10 @@ import java.rmi.registry.Registry;
 import rmi.Message;
 import rmi.Site;
 
+/**
+ * Send the message from the site on the computer as params.
+ *
+ */
 public class MainSendMessage {
 
 	/**

@@ -3,6 +3,10 @@ package rmi;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+/**
+ * Represents a node of network
+ *
+ */
 public interface Site extends Remote {
 	/**
 	 * Print the received message
