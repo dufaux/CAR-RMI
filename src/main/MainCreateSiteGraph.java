@@ -41,7 +41,7 @@ public class MainCreateSiteGraph {
 		int nombre = adminNumber.getNumberOfSites();
 			
 			
-		SiteGraph site = new SiteGraphImpl(hostname);
+		SiteGraph site = new SiteGraphImpl(hostname+" "+(nombre+1));
 		String rmiadd = "site"+(nombre+1);
 		
 		reglocal.bind(rmiadd, site);
