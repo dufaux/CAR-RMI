@@ -78,7 +78,7 @@ public class Graph {
 				for (int i = 1; i < ligne.length; i++) {
 					int neighbor = Integer.parseInt(ligne[i]);
 					if (neighbor < nbSite) {
-						liste.get(father).setNeighbor(liste.get(neighbor));
+						liste.get(father).addNeighbor(liste.get(neighbor));
 
 						this.textGraph += liste.get(father).getId() + " -- "
 								+ liste.get(neighbor).getId() + ";\n";

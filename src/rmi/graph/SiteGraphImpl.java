@@ -104,4 +104,9 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 	public SiteGraph[] getNeighbor() throws RemoteException {
 		return this.neighbors.toArray(new SiteGraph[this.neighbors.size()]);
 	}
+
+	@Override
+	public void addNeighbor(SiteGraph site) throws RemoteException {
+		this.neighbors.add(site);
+	}
 }

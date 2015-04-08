@@ -17,8 +17,16 @@ public interface SiteGraph extends Site{
 	 */
 	public void setNeighbor(SiteGraph... sites) throws RemoteException;
 	
+
 	/**
-	 * return an array of neighbors of the site
+	 * Adds a neighbor to a site
+	 * @param site the neighbor
+	 * @throws RemoteException
+	 */
+	public void addNeighbor(SiteGraph site) throws RemoteException;
+	
+	/**
+	 * Return an array of neighbors of the site
 	 * @return the array of neighbors
 	 * @throws RemoteException
 	 */
