@@ -1,7 +1,6 @@
 package main;
 
 import java.io.FileNotFoundException;
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.rmi.AccessException;
 import java.rmi.NotBoundException;
@@ -12,16 +11,12 @@ import java.util.ArrayList;
 
 import rmi.graph.Graph;
 import rmi.graph.SiteGraph;
-import rmi.graph.SiteGraphImpl;
-import rmi.tree.SiteTree;
-import rmi.tree.SiteTreeImpl;
-import rmi.tree.Tree;
 
 public class MainCreateGraph {
 
 	/**
 	 * @param args
-	 * @throws NotBoundException 
+	 * @throws NotBoundException
 	 * @throws RemoteException 
 	 * @throws AccessException 
 	 * @throws UnknownHostException 

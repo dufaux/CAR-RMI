@@ -3,7 +3,9 @@ package rmi.tree;
 import rmi.Site;
 
 /**
- * Represent a message with an iniator, a sender and a content.
+ * Is the implementation of the interface MessageTree.
+ * @author rakotoarivony
+ *
  */
 public class MessageTreeImpl implements MessageTree{
 
@@ -12,14 +14,17 @@ public class MessageTreeImpl implements MessageTree{
 	 */
 	private static final long serialVersionUID = -108044260821572554L;
 	private Site initiator;
+	/**
+	 * Is the site from which the message have been received
+	 */
 	private Site sender;
 	private String content;
 	
 	/**
 	 * Create a message
-	 * @param initiator : site which initiate the message.
-	 * @param sender : site which send the message to another site.
-	 * @param content : the content of the message
+	 * @param initiator : site which initiates the message.
+	 * @param sender : site from which this message is sent
+	 * @param content : content of the message
 	 */
 	public MessageTreeImpl(Site initiator, Site sender, String content){
 		this.initiator = initiator;
@@ -28,31 +33,31 @@ public class MessageTreeImpl implements MessageTree{
 	}
 	
 	/**
-	 * return the content of the message.
+	 * Returns the content of the message.
 	 */
-	public String getContents() {
+	public String getContent() {
 		return this.content;
 	}
 
 	/**
-	 * return the initiator of the message.
+	 * Returns the initiator of the message.
 	 */
 	public Site getInitiator() {
 		return this.initiator;
 	}
 
 	/**
-	 * return the sender of the message.
+	 * Returns the sender of the message.
 	 */
 	public Site getSender() {
 		return this.sender;
 	}
 
 	/**
-	 * change the sender of the message.
+	 * Changes the sender of the message.
 	 */
-	public void setSender(Site newsender) {
-		this.sender = newsender;
+	public void setSender(Site newSender) {
+		this.sender = newSender;
 	}
 	
 

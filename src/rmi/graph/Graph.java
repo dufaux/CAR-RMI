@@ -8,8 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import rmi.tree.SiteTree;
-
 public class Graph {
 	private List<SiteGraph> liste;
 	

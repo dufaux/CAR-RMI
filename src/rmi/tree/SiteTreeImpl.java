@@ -8,19 +8,31 @@ import java.util.List;
 
 import rmi.Message;
 
+/**
+ * Is the implementation of the interface SiteTree
+ * @author rakotoarivony
+ * @author dufaux
+ *
+ */
 public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6733433430886258854L;
+	
 	private SiteTree father;
 	private List<SiteTree> sons;
-	private String id;
-
+	protected String id;
+	protected Message lastMessage;
+	
 	/**
 	 * Constructor
 	 * @throws RemoteException 
 	 */
 	public SiteTreeImpl(String id) throws RemoteException {
 		super();
-		this.id = id;
+		
 		this.sons = new LinkedList<SiteTree>();
 	}
 
@@ -28,7 +40,7 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 	public void sendMessage(Message message) throws RemoteException {
 		MessageTree messageTree = (MessageTree) message;
 
-		final Message messageToDiffuse = new MessageTreeImpl(message.getInitiator(), this, message.getContents());
+		final Message messageToDiffuse = new MessageTreeImpl(message.getInitiator(), this, message.getContent());
 
 		if (this.father != null && !this.father.equals(messageTree.getSender())) {
 			new Runnable() {
@@ -42,13 +54,13 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 				}
 			}.run();
 		}
-		for (final SiteTree neighbor : this.sons) {
-			if (!neighbor.equals(messageTree.getSender())) {
+		for (final SiteTree son : this.sons) {
+			if (!son.equals(messageTree.getSender())) {
 				new Runnable() {
 					@Override
 					public void run() {
 						try {
-							neighbor.receiveMessage(messageToDiffuse);
+							son.receiveMessage(messageToDiffuse);
 						} catch (RemoteException e) {
 							System.out.println(e.getMessage());
 						}
@@ -61,8 +73,9 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 
 	@Override
 	public void receiveMessage(Message message) throws RemoteException {
+		this.lastMessage = message;
 		String toPrint = "Message from " + message.getInitiator().getId() + " : ";
-		toPrint += message.getContents();
+		toPrint += message.getContent();
 		System.out.println(toPrint);
 		this.sendMessage(message);
 
@@ -85,11 +98,6 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 	}
 
 	@Override
-	public String getId() throws RemoteException {
-		return this.id;
-	}
-
-	@Override
 	public boolean equals(Object o) {
 		if (o == null)
 			return false;
@@ -99,4 +107,19 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 		return (this.id.equals(tree.id));
 	}
 
+
+	@Override
+	public String getId() throws RemoteException {
+		return this.id;
+	}
+
+	@Override
+	public Message getLastMessage() throws RemoteException {
+		return this.lastMessage;
+	}
+
+	@Override
+	public void addSon(SiteTree siteTree) {
+		this.sons.add(siteTree);		
+	}
 }

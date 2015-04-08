@@ -12,8 +12,6 @@ import rmi.SiteAdministration;
 import rmi.SiteAdministrationImpl;
 import rmi.graph.SiteGraph;
 import rmi.graph.SiteGraphImpl;
-import rmi.tree.SiteTree;
-import rmi.tree.SiteTreeImpl;
 
 public class MainCreateSiteGraph {
 

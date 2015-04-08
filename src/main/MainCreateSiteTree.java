@@ -26,11 +26,10 @@ public class MainCreateSiteTree {
 	 * @throws MalformedURLException 
 	 */
 	public static void main(String[] args) throws UnknownHostException, RemoteException, AlreadyBoundException, MalformedURLException {
-		
 		InetAddress addr;
-	    addr = InetAddress.getLocalHost();
-	    String hostname = addr.getHostName();
-	    
+		addr = InetAddress.getLocalHost();
+		String hostname = addr.getHostName();
+		    
 		System.setProperty("java.rmi.server.hostname",hostname);
 		Registry reglocal = LocateRegistry.getRegistry("localhost");
 		

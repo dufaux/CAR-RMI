@@ -33,4 +33,11 @@ public interface Site extends Remote {
 	 * @throws RemoteException
 	 */
 	public String getId() throws RemoteException;
+	
+	/**
+	 * Returns the last message that this site has received.
+	 * @return the last received message, null if there isn't yet a received message
+	 * @throws RemoteException
+	 */
+	public Message getLastMessage() throws RemoteException;
 }

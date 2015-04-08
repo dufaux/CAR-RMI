@@ -1,4 +1,4 @@
 /**
- * contain the executables
+ * Contains the executables of the application
  */
 package main;
