@@ -25,7 +25,6 @@ public class MainCreateGraph {
 	public static void main(String[] args) throws AccessException, RemoteException, NotBoundException, UnknownHostException, FileNotFoundException {
 		
 		
-		ArrayList<Registry> registrys = new ArrayList<Registry>();
 		ArrayList<SiteGraph> sites = new ArrayList<SiteGraph>();
 		
 		Registry reg;
