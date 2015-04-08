@@ -13,27 +13,52 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Represents a graph network of site
+ *
+ */
 public class Graph {
 	private List<SiteGraph> liste;
 	private String textGraph;
 	
+	/**
+	 * initialize the site list with an empty liste.
+	 */
 	public Graph(){
 		liste = new ArrayList<SiteGraph>();
 		this.textGraph = "";
 	}
 	
+	/**
+	 * add a new site to the graph
+	 * @param site
+	 */
 	public void add(SiteGraph site){
 		this.liste.add(site);
 	}
 	
+	/**
+	 * set the list of sites from an array of params
+	 * @param lst : list of site
+	 */
 	public void setListe(SiteGraph... lst){
 		this.liste = new ArrayList<SiteGraph>(Arrays.asList(lst));
 	}
 	
+	/**
+	 * set list of sites from a list
+	 * @param lst : list of site
+	 */
 	public void setListe(List<SiteGraph> lst){
 		this.liste = lst;
 	}
 	
+	/**
+	 * init the graph and set neighbors from the file in parameter
+	 * @param nameFile : the name of graph file as example
+	 * @throws FileNotFoundException
+	 * @throws RemoteException
+	 */
 	public void init(String nameFile) throws FileNotFoundException, RemoteException{
         int nbSite = this.liste.size();
         
@@ -56,7 +81,10 @@ public class Graph {
 	}
 	
 	
-	
+	/**
+	 * create a graph file from the current graph.
+	 * @param namefile : the name of the file
+	 */
 	public void createFile(String namefile){
 		Writer writer = null;
 

@@ -33,7 +33,7 @@ public interface Site extends Remote {
 	/**
 	 * Returns the identification of this site
 	 * 
-	 * @return
+	 * @return the identifiant of the site
 	 * @throws RemoteException
 	 */
 	public String getId() throws RemoteException;
