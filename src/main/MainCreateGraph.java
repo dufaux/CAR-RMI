@@ -9,8 +9,10 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
 
+import rmi.SiteAdministration;
 import rmi.graph.Graph;
 import rmi.graph.SiteGraph;
+import rmi.tree.SiteTree;
 
 public class MainCreateGraph {
 
@@ -28,12 +30,21 @@ public class MainCreateGraph {
 		ArrayList<SiteGraph> sites = new ArrayList<SiteGraph>();
 		
 		Registry reg;
-		int nbsite;
+		SiteAdministration nbsite;
 		SiteGraph site;
-		for(int i = 0;i<args.length;i=i+2){
+		/*for(int i = 0;i<args.length;i=i+2){
 			reg = LocateRegistry.getRegistry(args[i]);
 			nbsite = Integer.parseInt(args[i+1]);
 			for(int j = 1;j<=nbsite;j++){
+				site = (SiteGraph) reg.lookup("site"+j);
+				sites.add(site);
+			}
+		}*/
+		
+		for(int i = 0;i<args.length;i++){
+			reg = LocateRegistry.getRegistry(args[i]);
+			nbsite = (SiteAdministration) reg.lookup("numberofsites");
+			for(int j = 1;j<=nbsite.getNumberOfSites();j++){
 				site = (SiteGraph) reg.lookup("site"+j);
 				sites.add(site);
 			}
