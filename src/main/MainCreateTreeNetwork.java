@@ -28,18 +28,6 @@ public class MainCreateTreeNetwork {
 		
 		ArrayList<SiteTree> sites = new ArrayList<SiteTree>();
 		
-		// recupere les registre
-		/*Registry reg = LocateRegistry.getRegistry(args[0]);
-		registrys.add(reg);
-		reg = LocateRegistry.getRegistry(args[1]);
-		registrys.add(reg);
-		reg = LocateRegistry.getRegistry(args[2]);
-		registrys.add(reg);
-		
-		SiteTree s1 = (SiteTree) registrys.get(0).lookup("site");
-		SiteTree s2 = (SiteTree) registrys.get(1).lookup("site");
-		SiteTree s3 = (SiteTree) registrys.get(2).lookup("site");*/
-		
 		Registry reg;
 		SiteAdministration nbsite;
 		SiteTree site;
@@ -56,10 +44,6 @@ public class MainCreateTreeNetwork {
 		greentree.setListe(sites);
 		greentree.init("tree.csv");
 		greentree.createFile("tree.txt");
-		/*
-		s1.setSons(s2, s3);
-		s2.setFather(s1);
-		s3.setFather(s1);*/
 	}
 
 }

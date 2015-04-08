@@ -79,8 +79,7 @@ public class MainCreateGraphSite {
 					 br.close();  
 					 r.close(); 
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new RuntimeException(e);
 				}  
 			}
 		}.run();
