@@ -1,6 +1,5 @@
 package main;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.rmi.AccessException;
 import java.rmi.NotBoundException;
@@ -10,7 +9,6 @@ import java.rmi.registry.Registry;
 import java.util.ArrayList;
 
 import rmi.graph.SiteGraph;
-import rmi.tree.SiteTree;
 
 public class MainCreateGraph {
 

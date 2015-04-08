@@ -1,4 +1,4 @@
 /**
- * Contain main classes of the project.
+ * Contains principal interfaces of the project.
  */
 package rmi;

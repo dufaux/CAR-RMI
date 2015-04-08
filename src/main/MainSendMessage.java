@@ -7,8 +7,6 @@ import java.rmi.registry.Registry;
 
 import rmi.Message;
 import rmi.Site;
-import rmi.tree.MessageTree;
-import rmi.tree.MessageTreeImpl;
 
 public class MainSendMessage {
 

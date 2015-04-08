@@ -7,16 +7,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import rmi.Message;
-import rmi.tree.MessageTreeImpl;
-import rmi.tree.SiteTree;
-import rmi.tree.SiteTreeImpl;
 
 public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 
-	private String id;
 	private List<SiteGraph> neighbors;
 	private static final long serialVersionUID = 7532958343594021652L;
 	private List<MessageGraph> history;
+	protected String id;
+	protected Message lastMessage;
 	
 	/**
 	 * constructor of SiteGraphImpl
@@ -30,7 +28,7 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 		this.history = new LinkedList<MessageGraph>();
 	}
 
-
+	@Override
 	public void sendMessage(final Message message) throws RemoteException {
 		for (final SiteGraph neighbor : this.neighbors) {
 			new Runnable() {
@@ -53,13 +51,14 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 
 	@Override
 	public void receiveMessage(Message message) throws RemoteException {
+		this.lastMessage = message;
 		if(this.history.contains(message) || this.equals(message.getInitiator()) ){
-			//whattodo?
+			//ne rien faire
 		}
 		else{
 			this.history.add((MessageGraph) message);
 			String toPrint = "Message from " + message.getInitiator().getId()  + " : ";
-			toPrint += message.getContents();
+			toPrint += message.getContent();
 			System.out.println(toPrint);
 			this.sendMessage(message);
 		}
@@ -73,12 +72,6 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 
 
 	@Override
-	public String getId() throws RemoteException {
-		return this.id;
-	}
-
-	
-	@Override
 	public boolean equals(Object o) {
 		if (o == null)
 			return false;
@@ -86,6 +79,16 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 			return false;
 		SiteGraphImpl siteg = (SiteGraphImpl) o;
 		return (this.id.equals(siteg.id));
+	}
+	
+	@Override
+	public String getId() throws RemoteException {
+		return this.id;
+	}
+
+	@Override
+	public Message getLastMessage() throws RemoteException {
+		return this.lastMessage;
 	}
 	
 }

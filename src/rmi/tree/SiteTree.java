@@ -4,6 +4,11 @@ import java.rmi.RemoteException;
 
 import rmi.Site;
 
+/**
+ * Represents a site in a tree wetwork
+ * @author rakotoarivony
+ * @author dufaux
+ */
 public interface SiteTree extends Site{
 	
 	/**

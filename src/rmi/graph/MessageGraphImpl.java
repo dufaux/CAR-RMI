@@ -1,14 +1,16 @@
 package rmi.graph;
 
-import rmi.Message;
 import rmi.Site;
 
 /**
- * Represent a message with an iniator and a content.
+ * Is the implementation of the interface MessageTree.
  */
 public class MessageGraphImpl implements MessageGraph{
 	
+	private static final long serialVersionUID = -854910097411915160L;
+	
 	private Site initiator;
+	
 	private String content;
 	
 	/**
@@ -24,7 +26,7 @@ public class MessageGraphImpl implements MessageGraph{
 	/**
 	 * return the content of the message
 	 */
-	public String getContents() {
+	public String getContent() {
 		return this.content;
 	}
 
@@ -43,7 +45,7 @@ public class MessageGraphImpl implements MessageGraph{
 	    
 	    MessageGraphImpl otherMess = (MessageGraphImpl) other;
 	    
-	    return this.initiator.equals(otherMess.getInitiator()) && this.content.equals(otherMess.getContents());
+	    return this.initiator.equals(otherMess.getInitiator()) && this.content.equals(otherMess.getContent());
 	}
 	
 	
