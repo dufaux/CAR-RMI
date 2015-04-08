@@ -5,11 +5,12 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import rmi.Message;
 import rmi.Site;
 import rmi.tree.MessageTree;
 import rmi.tree.MessageTreeImpl;
 
-public class mainSendMessage {
+public class MainSendMessage {
 
 	/**
 	 * @param args
@@ -20,7 +21,7 @@ public class mainSendMessage {
 		
 		Registry reg = LocateRegistry.getRegistry(args[0]);
 		Site site = (Site) reg.lookup("site");
-		MessageTree m = new MessageTreeImpl(site, site, "Coucou c'est "+args[0]);
+		Message m = site.createMessage("Coucou c'est "+args[0]);
 		site.sendMessage(m);
 
 	}

@@ -1,13 +1,14 @@
 package rmi.tree;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 import rmi.Message;
 
-public class SiteTreeImpl implements SiteTree {
+public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 
 	private SiteTree father;
 	private List<SiteTree> sons;
@@ -15,8 +16,9 @@ public class SiteTreeImpl implements SiteTree {
 
 	/**
 	 * Constructor
+	 * @throws RemoteException 
 	 */
-	public SiteTreeImpl(String id) {
+	public SiteTreeImpl(String id) throws RemoteException {
 		super();
 		this.id = id;
 		this.sons = new LinkedList<SiteTree>();

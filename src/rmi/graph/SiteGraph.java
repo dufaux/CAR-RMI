@@ -10,5 +10,5 @@ public interface SiteGraph extends Site{
 	 * @param site
 	 * @throws RemoteException
 	 */
-	public void setNeighbor(SiteGraph... site) throws RemoteException;
+	public void setNeighbor(SiteGraph... sites) throws RemoteException;
 }
