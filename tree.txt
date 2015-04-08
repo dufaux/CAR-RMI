@@ -1,0 +1,8 @@
+digraph tree { 
+number1 -> number2;
+number1 -> number5;
+number2 -> number3;
+number2 -> number4;
+number3 -> number7;
+number5 -> number6;
+}
