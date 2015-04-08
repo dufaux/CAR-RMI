@@ -47,16 +47,16 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 
 	@Override
 	public void setNeighbor(SiteGraph... sites) throws RemoteException {
-		this.neighbors = Arrays.asList(sites);
+		this.neighbors = new LinkedList<SiteGraph>(Arrays.asList(sites));
 	}
 
 	@Override
-	public void receiveMessage(Message message) throws RemoteException {
-		this.lastMessage = message;
+	public void receiveMessage(Message message) throws RemoteException {		
 		if(this.history.contains(message) || this.equals(message.getInitiator()) ){
 			//ne rien faire
 		}
 		else{
+			this.lastMessage = message;
 			this.history.add(message);
 			String toPrint = "Message initiated by " + message.getInitiator() + " and sent by "+message.getSender()+" : ";
 			toPrint += message.getContent();
@@ -95,5 +95,10 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 	@Override
 	public String toString(){
 		return this.id;
+	}
+
+	@Override
+	public SiteGraph[] getNeighbor() throws RemoteException {
+		return this.neighbors.toArray(new SiteGraph[this.neighbors.size()]);
 	}
 }

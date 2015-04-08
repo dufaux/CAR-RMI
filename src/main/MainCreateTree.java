@@ -8,7 +8,6 @@ import java.rmi.registry.Registry;
 import java.util.ArrayList;
 
 import rmi.SiteAdministration;
-import rmi.exeption.AlreadyInListException;
 import rmi.tree.SiteTree;
 import rmi.tree.Tree;
 
@@ -21,7 +20,7 @@ public class MainCreateTree {
 	 * @throws FileNotFoundException 
 	 * @throws AlreadyInListException 
 	 */
-	public static void main(String[] args) throws RemoteException, NotBoundException, FileNotFoundException, AlreadyInListException {
+	public static void main(String[] args) throws RemoteException, NotBoundException, FileNotFoundException {
 		
 		ArrayList<SiteTree> sites = new ArrayList<SiteTree>();
 		

@@ -16,4 +16,6 @@ public interface SiteGraph extends Site{
 	 * @throws RemoteException
 	 */
 	public void setNeighbor(SiteGraph... sites) throws RemoteException;
+	
+	public SiteGraph[] getNeighbor() throws RemoteException;
 }

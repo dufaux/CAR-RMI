@@ -3,7 +3,6 @@ package rmi.tree;
 import java.rmi.RemoteException;
 
 import rmi.Site;
-import rmi.exeption.AlreadyInListException;
 
 /**
  * Represents a site in a tree network
@@ -31,19 +30,19 @@ public interface SiteTree extends Site{
 	 * @param siteTree
 	 * @throws 
 	 */
-	public void addSon(SiteTree siteTree) throws RemoteException,AlreadyInListException;
+	public void addSon(SiteTree siteTree) throws RemoteException;
 	
 	/**
 	 * Returns an array containing the list of sons of this site.
 	 * @return an array containing the list of sons of this site.The array is empty if it does not have any son
 	 */
-	public SiteTree[] getSons();
+	public SiteTree[] getSons() throws RemoteException;
 	
 	/**
 	 * Returns the father of this site.
 	 * @return the father of this site. 
 	 * 			null if it is the root
 	 */
-	public Site getFather();
+	public Site getFather() throws RemoteException;
 
 }

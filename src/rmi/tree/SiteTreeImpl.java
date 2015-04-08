@@ -96,7 +96,7 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 
 	@Override
 	public void setSons(SiteTree... sons) throws RemoteException {
-		this.sons = Arrays.asList(sons);
+		this.sons = new LinkedList<SiteTree>(Arrays.asList(sons));
 	}
 
 	@Override
@@ -132,12 +132,12 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 	}
 
 	@Override
-	public SiteTree[] getSons() {
+	public SiteTree[] getSons() throws RemoteException {
 		return this.sons.toArray(new SiteTree[this.sons.size()]);
 	}
 
 	@Override
-	public Site getFather() {
+	public Site getFather() throws RemoteException  {
 		return this.father;
 	}
 }
