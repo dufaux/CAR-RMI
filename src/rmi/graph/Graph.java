@@ -27,7 +27,7 @@ public class Graph {
 	}
 	
 	public void setListe(SiteGraph... lst){
-		this.liste = Arrays.asList(lst);
+		this.liste = new ArrayList<SiteGraph>(Arrays.asList(lst));
 	}
 	
 	public void setListe(List<SiteGraph> lst){
