@@ -1,11 +1,10 @@
-package rmi.graph;
+package rmi;
 
-import rmi.Site;
 
 /**
  * Is the implementation of the interface MessageTree.
  */
-public class MessageGraphImpl implements MessageGraph{
+public class MessageImpl implements Message{
 	
 	private static final long serialVersionUID = -854910097411915160L;
 	
@@ -14,13 +13,20 @@ public class MessageGraphImpl implements MessageGraph{
 	private String content;
 	
 	/**
+	 * Is the site from which the message have been received
+	 */
+	private Site sender;
+	
+	
+	/**
 	 * Create a graph message.
 	 * @param initiator : the initiator of the message
 	 * @param content : the content of the message
 	 */
-	public MessageGraphImpl(Site initiator, String content){
+	public MessageImpl(Site initiator, Site sender, String content){
 		this.initiator = initiator;
 		this.content = content;
+		this.sender = sender;
 	}
 
 	/**
@@ -37,13 +43,28 @@ public class MessageGraphImpl implements MessageGraph{
 		return this.initiator;
 	}
 
+	/**
+	 * Returns the sender of the message.
+	 */
+	public Site getSender() {
+		return this.sender;
+	}
+
+	/**
+	 * Changes the sender of the message.
+	 */
+	public void setSender(Site newSender) {
+		this.sender = newSender;
+	}
+	
+	
 	@Override
 	public boolean equals(Object other){
 		if (other == null) return false;
 	    if (other == this) return true;
-	    if (!(other instanceof MessageGraphImpl))return false;
+	    if (!(other instanceof MessageImpl))return false;
 	    
-	    MessageGraphImpl otherMess = (MessageGraphImpl) other;
+	    MessageImpl otherMess = (MessageImpl) other;
 	    
 	    return this.initiator.equals(otherMess.getInitiator()) && this.content.equals(otherMess.getContent());
 	}

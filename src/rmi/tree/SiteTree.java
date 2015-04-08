@@ -29,6 +29,6 @@ public interface SiteTree extends Site{
 	 * Adds a son to this site
 	 * @param siteTree
 	 */
-	public void addSon(SiteTree siteTree);
+	public void addSon(SiteTree siteTree) throws RemoteException;
 
 }

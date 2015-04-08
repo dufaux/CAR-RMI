@@ -7,12 +7,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import rmi.Message;
+import rmi.MessageImpl;
 
 public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 
 	private List<SiteGraph> neighbors;
 	private static final long serialVersionUID = 7532958343594021652L;
-	private List<MessageGraph> history;
+	private List<Message> history;
 	protected String id;
 	protected Message lastMessage;
 	
@@ -25,7 +26,7 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 		super();
 		this.id = id;
 		this.neighbors = new LinkedList<SiteGraph>();
-		this.history = new LinkedList<MessageGraph>();
+		this.history = new LinkedList<Message>();
 	}
 
 	@Override
@@ -56,8 +57,8 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 			//ne rien faire
 		}
 		else{
-			this.history.add((MessageGraph) message);
-			String toPrint = "Message from " + message.getInitiator().getId()  + " : ";
+			this.history.add(message);
+			String toPrint = "Message initiated by " + message.getInitiator().getId() + "and sent by "+message.getSender()+":";
 			toPrint += message.getContent();
 			System.out.println(toPrint);
 			this.sendMessage(message);
@@ -66,7 +67,7 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 
 	@Override
 	public Message createMessage(String content) throws RemoteException {
-		Message message = new MessageGraphImpl(this, content);
+		Message message = new MessageImpl(this,this, content);
 		return message;
 	}
 

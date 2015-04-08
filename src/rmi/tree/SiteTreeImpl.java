@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import rmi.Message;
+import rmi.MessageImpl;
 
 /**
  * Is the implementation of the interface SiteTree
@@ -32,15 +33,15 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 	 */
 	public SiteTreeImpl(String id) throws RemoteException {
 		super();
-		
+		this.id = id;
 		this.sons = new LinkedList<SiteTree>();
 	}
 
 	@Override
 	public void sendMessage(Message message) throws RemoteException {
-		MessageTree messageTree = (MessageTree) message;
+		Message messageTree = message;
 
-		final Message messageToDiffuse = new MessageTreeImpl(message.getInitiator(), this, message.getContent());
+		final Message messageToDiffuse = new MessageImpl(message.getInitiator(), this, message.getContent());
 
 		if (this.father != null && !this.father.equals(messageTree.getSender())) {
 			new Runnable() {
@@ -74,7 +75,7 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 	@Override
 	public void receiveMessage(Message message) throws RemoteException {
 		this.lastMessage = message;
-		String toPrint = "Message from " + message.getInitiator().getId() + " : ";
+		String toPrint = "Message initiated by " + message.getInitiator().getId() + "and sent by "+message.getSender()+":";
 		toPrint += message.getContent();
 		System.out.println(toPrint);
 		this.sendMessage(message);
@@ -83,7 +84,7 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 
 	@Override
 	public Message createMessage(String content) throws RemoteException {
-		Message message = new MessageTreeImpl(this, this, content);
+		Message message = new MessageImpl(this, this, content);
 		return message;
 	}
 
@@ -119,7 +120,7 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 	}
 
 	@Override
-	public void addSon(SiteTree siteTree) {
+	public void addSon(SiteTree siteTree) throws RemoteException {
 		this.sons.add(siteTree);		
 	}
 }
