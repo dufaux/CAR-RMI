@@ -1,0 +1,18 @@
+graph mygraph { 
+machine1 -- machine2;
+machine1 -- machine5;
+machine1 -- machine6;
+machine2 -- machine1;
+machine2 -- machine3;
+machine2 -- machine4;
+machine2 -- machine5;
+machine3 -- machine2;
+machine3 -- machine4;
+machine4 -- machine2;
+machine4 -- machine3;
+machine5 -- machine1;
+machine5 -- machine2;
+machine6 -- machine1;
+machine6 -- machine7;
+machine7 -- machine6;
+}

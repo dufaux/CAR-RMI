@@ -18,7 +18,8 @@ public class MainSendMessage {
 	public static void main(String[] args) throws RemoteException, NotBoundException {
 		
 		Registry reg = LocateRegistry.getRegistry(args[0]);
-		Site site = (Site) reg.lookup("site");
+		String numero = args[1];
+		Site site = (Site) reg.lookup("site"+numero);
 		Message m = site.createMessage("Coucou c'est "+args[0]);
 		site.sendMessage(m);
 

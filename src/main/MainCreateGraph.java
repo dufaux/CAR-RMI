@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import rmi.graph.Graph;
 import rmi.graph.SiteGraph;
+import rmi.graph.SiteGraphImpl;
 
 public class MainCreateGraph {
 
@@ -40,9 +41,11 @@ public class MainCreateGraph {
 			}
 		}
 		
+
 		Graph biggraph = new Graph();
 		biggraph.setListe(sites);
 		biggraph.init("graph.csv");
+		biggraph.createFile("graph.txt");
 		
 		
 		

@@ -52,7 +52,7 @@ public class MainCreateTree {
 		Tree greentree = new Tree();
 		greentree.setListe(sites);
 		greentree.init("tree.csv");
-		
+		greentree.createFile("tree.txt");
 		/*
 		s1.setSons(s2, s3);
 		s2.setFather(s1);

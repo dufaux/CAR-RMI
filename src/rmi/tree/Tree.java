@@ -1,7 +1,12 @@
 package rmi.tree;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,9 +16,11 @@ import java.util.Scanner;
 public class Tree {
 	
 	private List<SiteTree> liste;
+	private String textGraph;
 	
 	public Tree(){
 		liste = new ArrayList<SiteTree>();
+		this.textGraph = "";
 	}
 	
 	public void add(SiteTree site){
@@ -39,13 +46,31 @@ public class Tree {
 	        	for(int i=1;i<ligne.length;i++){
 	        		int son = Integer.parseInt(ligne[i]);
 	        		if(son < nbSite){
-	        			System.out.println(liste.get(father).getId()+" add son"+liste.get(son).getId());
 	        			liste.get(father).addSon(liste.get(son));
 	        			liste.get(son).setFather(liste.get(father));
+	        			
+	        			System.out.println(liste.get(father).getId()+" add son"+liste.get(son).getId());
+	        			this.textGraph+= liste.get(father).getId()+" -> "+liste.get(son).getId()+";\n";
 	        		}
 	        	}
         	}
         }
         scanner.close();
+	}
+	
+	public void createFile(String namefile){
+		Writer writer = null;
+
+		try {
+		    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(namefile), "utf-8"));
+		    
+		    writer.write("digraph tree { \n");
+		    writer.write(textGraph);
+		    writer.write("}");
+		} catch (IOException ex) {
+		  // report
+		} finally {
+		   try {writer.close();} catch (Exception ex) {}
+		}
 	}
 }
