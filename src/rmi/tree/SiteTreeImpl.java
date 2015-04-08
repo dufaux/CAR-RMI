@@ -8,6 +8,7 @@ import java.util.List;
 
 import rmi.Message;
 import rmi.MessageImpl;
+import rmi.Site;
 
 /**
  * Is the implementation of the interface SiteTree
@@ -121,11 +122,22 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 
 	@Override
 	public void addSon(SiteTree siteTree) throws RemoteException {
-		this.sons.add(siteTree);		
+		if(!this.sons.contains(siteTree))
+			this.sons.add(siteTree);		
 	}
 	
 	@Override
 	public String toString(){
 		return this.id;
+	}
+
+	@Override
+	public SiteTree[] getSons() {
+		return this.sons.toArray(new SiteTree[this.sons.size()]);
+	}
+
+	@Override
+	public Site getFather() {
+		return this.father;
 	}
 }

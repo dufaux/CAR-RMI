@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import rmi.exeption.AlreadyInListException;
+
 public class Tree {
 	
 	private List<SiteTree> liste;
@@ -35,7 +37,7 @@ public class Tree {
 		this.liste = lst;
 	}
 	
-	public void init(String nameFile) throws FileNotFoundException, RemoteException{
+	public void init(String nameFile) throws FileNotFoundException, RemoteException, AlreadyInListException{
         int nbSite = this.liste.size();
         
 		Scanner scanner = new Scanner(new File(nameFile));

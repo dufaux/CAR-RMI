@@ -8,8 +8,8 @@ import java.rmi.registry.Registry;
 import java.util.ArrayList;
 
 import rmi.SiteAdministration;
+import rmi.exeption.AlreadyInListException;
 import rmi.tree.SiteTree;
-import rmi.tree.SiteTreeImpl;
 import rmi.tree.Tree;
 
 public class MainCreateTree {
@@ -19,10 +19,10 @@ public class MainCreateTree {
 	 * @throws RemoteException 
 	 * @throws NotBoundException 
 	 * @throws FileNotFoundException 
+	 * @throws AlreadyInListException 
 	 */
-	public static void main(String[] args) throws RemoteException, NotBoundException, FileNotFoundException {
+	public static void main(String[] args) throws RemoteException, NotBoundException, FileNotFoundException, AlreadyInListException {
 		
-		ArrayList<Registry> registrys = new ArrayList<Registry>();
 		ArrayList<SiteTree> sites = new ArrayList<SiteTree>();
 		
 		// recupere les registre

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import rmi.graph.Graph;
 import rmi.graph.SiteGraph;
-import rmi.graph.SiteGraphImpl;
 
 public class MainCreateGraph {
 
@@ -45,29 +44,6 @@ public class MainCreateGraph {
 		biggraph.setListe(sites);
 		biggraph.init("graph.csv");
 		biggraph.createFile("graph.txt");
-		
-		
-		
-		/*// recupere les registre
-		Registry reg = LocateRegistry.getRegistry(args[0]);
-		registrys.add(reg);
-		reg = LocateRegistry.getRegistry(args[1]);
-		registrys.add(reg);
-		//reg = LocateRegistry.getRegistry(args[2]);
-		//registrys.add(reg);
-		
-		
-		SiteGraph s1 = (SiteGraph) registrys.get(0).lookup("site");
-		SiteGraph s2 = (SiteGraph) registrys.get(1).lookup("site");
-		SiteTree s3 = (SiteTree) registrys.get(2).lookup("site");
-		
-		
-		
-		
-		//s1.setSons(s2, s3);
-		s1.setNeighbor(s2);
-		s2.setNeighbor(s1);
-		//s3.setFather(s1);*/
 		
 	}
 

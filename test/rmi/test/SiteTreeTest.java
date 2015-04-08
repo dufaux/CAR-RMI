@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import org.junit.Test;
 
 import rmi.Message;
+import rmi.exeption.AlreadyInListException;
 import rmi.tree.*;
 
 public class SiteTreeTest {
@@ -75,13 +76,16 @@ public class SiteTreeTest {
 	}
 
 	@Test
-	public void testSetFatherAndSons() throws RemoteException {
+	public void testSetFatherAndSons() throws RemoteException, AlreadyInListException {
 		SiteTree s1 = new SiteTreeImpl("site1");
 		SiteTree s2 = new SiteTreeImpl("site2");
 		SiteTree s3 = new SiteTreeImpl("site3");
 		s1.setSons(s2);
 		s2.setFather(s1);
-		fail();
+		assertEquals(s1, s2.getFather());
+		s2.addSon(s3);
+		s3.setFather(s2);
+		assertEquals(s2, s3.getFather());
 	}
 
 	@Test
