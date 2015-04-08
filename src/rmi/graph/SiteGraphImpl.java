@@ -9,6 +9,7 @@ import java.util.List;
 import rmi.Message;
 import rmi.tree.MessageTreeImpl;
 import rmi.tree.SiteTree;
+import rmi.tree.SiteTreeImpl;
 
 public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 
@@ -57,8 +58,8 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 		}
 		else{
 			this.history.add((MessageGraph) message);
-			String toPrint = "Message from " + message.getInitiator() + " : ";
-			toPrint = message.getContents();
+			String toPrint = "Message from " + message.getInitiator().getId()  + " : ";
+			toPrint += message.getContents();
 			System.out.println(toPrint);
 			this.sendMessage(message);
 		}
@@ -76,5 +77,15 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 		return this.id;
 	}
 
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o == null)
+			return false;
+		if (!(o instanceof SiteGraphImpl))
+			return false;
+		SiteGraphImpl siteg = (SiteGraphImpl) o;
+		return (this.id.equals(siteg.id));
+	}
 	
 }

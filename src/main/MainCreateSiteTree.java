@@ -18,7 +18,7 @@ public class MainCreateSiteTree {
 	 * @throws AlreadyBoundException 
 	 * @throws UnknownHostException 
 	 */
-	public static void main(String[] args) throws RemoteException, AlreadyBoundException, UnknownHostException {
+	public static void main(String[] args) throws UnknownHostException, RemoteException, AlreadyBoundException {
 		
 		InetAddress addr;
 	    addr = InetAddress.getLocalHost();

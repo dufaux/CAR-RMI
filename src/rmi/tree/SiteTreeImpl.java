@@ -61,8 +61,8 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 
 	@Override
 	public void receiveMessage(Message message) throws RemoteException {
-		String toPrint = "Message from " + message.getInitiator() + " : ";
-		toPrint = message.getContents();
+		String toPrint = "Message from " + message.getInitiator().getId() + " : ";
+		toPrint += message.getContents();
 		System.out.println(toPrint);
 		this.sendMessage(message);
 
