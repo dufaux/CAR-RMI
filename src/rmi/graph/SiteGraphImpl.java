@@ -58,7 +58,7 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 		else{
 			this.lastMessage = message;
 			this.history.add(message);
-			String toPrint = "Message initiated by " + message.getInitiator().toString() + " and sent by "+message.getSender().toString()+" : ";
+			String toPrint = "Message initiated by " + message.getInitiator().getId() + " and sent by "+message.getSender().getId()+" : ";
 			toPrint += message.getContent();
 			System.out.println(toPrint);
 			this.sendMessage(message);
