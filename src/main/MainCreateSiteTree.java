@@ -46,7 +46,7 @@ public class MainCreateSiteTree {
 		int nombre = adminNumber.getNumberOfSites();
 			
 			
-		final SiteTree site = new SiteTreeImpl(hostname+" "+(nombre+1));
+		final SiteTree site = new SiteTreeImpl(hostname+"_"+(nombre+1));
 		String rmiadd = "site"+(nombre+1);
 		
 		reglocal.bind(rmiadd, site);
