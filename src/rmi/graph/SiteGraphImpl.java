@@ -58,10 +58,7 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 
 	@Override
 	public void receiveMessage(Message message) throws RemoteException {		
-		if(this.history.contains(message) || this.equals(message.getInitiator()) ){
-			//ne rien faire
-		}
-		else{
+		if(!this.history.contains(message) && !this.equals(message.getInitiator()) ){
 			this.lastMessage = message;
 			this.history.add(message);
 			String toPrint = "Message initiated by " + message.getInitiator().getId() + " and sent by "+message.getSender().getId()+" : ";
