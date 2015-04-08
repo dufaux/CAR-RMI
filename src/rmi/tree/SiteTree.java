@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import rmi.Site;
 
 /**
- * Represents a site in a tree wetwork
+ * Represents a site in a tree network
  * @author rakotoarivony
  * @author dufaux
  */
@@ -24,4 +24,11 @@ public interface SiteTree extends Site{
 	 * @throws RemoteException
 	 */
 	public void setSons(SiteTree... sons ) throws RemoteException;
+
+	/**
+	 * Adds a son to this site
+	 * @param siteTree
+	 */
+	public void addSon(SiteTree siteTree);
+
 }

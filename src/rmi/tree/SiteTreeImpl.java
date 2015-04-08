@@ -117,4 +117,9 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 	public Message getLastMessage() throws RemoteException {
 		return this.lastMessage;
 	}
+
+	@Override
+	public void addSon(SiteTree siteTree) {
+		this.sons.add(siteTree);		
+	}
 }
