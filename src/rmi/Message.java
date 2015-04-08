@@ -13,26 +13,25 @@ import java.io.Serializable;
 public interface Message extends Serializable {
 	/**
 	 * Returns the contents of this message
-	 * @return
+	 * @return the content of the message
 	 */
 	public String getContent();
 	
 	/**
 	 * Return the initiator of this message
-	 * @return
+	 * @return the initiator of the message
 	 */
 	public Site getInitiator();
 	
 	/**
 	 * Returns the site which sent this message
-	 * @return
+	 * @return the site which sent the message
 	 */
 	public Site getSender();
 	
 	
 	/**
 	 * Set the sender of the message
-	 * @return
 	 */
 	public void setSender(Site newsender);
 }

@@ -14,28 +14,53 @@ import java.util.List;
 import java.util.Scanner;
 
 
+/**
+ * 
+ *  Represents a tree network of site
+ */
 public class Tree {
 	
 	private List<SiteTree> liste;
 	private String textGraph;
 	
+	/**
+	 * initialize the site list with an empty liste.
+	 */
 	public Tree(){
 		liste = new ArrayList<SiteTree>();
 		this.textGraph = "";
 	}
 	
+	/**
+	 * add a new site to the tree
+	 * @param site
+	 */
 	public void add(SiteTree site){
 		this.liste.add(site);
 	}
 	
+	/**
+	 * set the list of sites from an array of params
+	 * @param lst : list of site
+	 */
 	public void setListe(SiteTree... lst){
 		this.liste = Arrays.asList(lst);
 	}
 	
+	/**
+	 * set list of sites from a list
+	 * @param lst : list of site
+	 */
 	public void setListe(List<SiteTree> lst){
 		this.liste = lst;
 	}
 	
+	/**
+	 * init the tree and set neighbors from the file in parameter
+	 * @param nameFile : the name of tree file as example
+	 * @throws FileNotFoundException
+	 * @throws RemoteException
+	 */
 	public void init(String nameFile) throws FileNotFoundException, RemoteException{
         int nbSite = this.liste.size();
         
@@ -59,6 +84,10 @@ public class Tree {
         scanner.close();
 	}
 	
+	/**
+	 * create a tree file from the current tree.
+	 * @param namefile : the name of the text file
+	 */
 	public void createFile(String namefile){
 		Writer writer = null;
 

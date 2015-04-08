@@ -9,6 +9,12 @@ import java.util.List;
 import rmi.Message;
 import rmi.MessageImpl;
 
+/**
+ * Is the implementation of the interface SiteGraph
+ * @author rakotoarivony
+ * @author dufaux
+ *
+ */
 public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 
 	private List<SiteGraph> neighbors;

@@ -25,12 +25,10 @@ rmiregistry
 ## Packages
 | Name | Description |
 |-----|-------------|
-|main| contain the executables|
-|rmi| contain the mains class for our rmi network|
-|rmi.graph|contain classes used to create and manage network graph of sites|
-|rmi.tree|contain classes used to create and manage network tree of sites|
-
-
+|main|Contains the executables of the application|
+|rmi|Contains principal interfaces of the project|
+|rmi.graph|Contains interfaces and implementations of site in a graph network|
+|rmi.tree|Contains interfaces and implementations of site in a tree network|
 
 # Exceptions
 
