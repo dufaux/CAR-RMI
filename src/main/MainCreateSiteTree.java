@@ -1,5 +1,8 @@
 package main;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.UnknownHostException;
@@ -9,6 +12,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import rmi.Message;
 import rmi.SiteAdministration;
 import rmi.SiteAdministrationImpl;
 import rmi.tree.SiteTree;
@@ -42,13 +46,41 @@ public class MainCreateSiteTree {
 		int nombre = adminNumber.getNumberOfSites();
 			
 			
-		SiteTree site = new SiteTreeImpl(hostname+" "+(nombre+1));
+		final SiteTree site = new SiteTreeImpl(hostname+" "+(nombre+1));
 		String rmiadd = "site"+(nombre+1);
 		
 		reglocal.bind(rmiadd, site);
 		adminNumber.increment();
 		System.out.println("NEW SITE TREE CREATED ON THIS COMPUTER : "+hostname+" \n" +
 				"bound on local registry with this adress : "+rmiadd);
+		
+		
+		new Runnable() {
+			@Override
+			public void run() {
+				 try {
+					 InputStreamReader r=new InputStreamReader(System.in);  
+					 BufferedReader br=new BufferedReader(r);  
+					  
+					 String message="";  
+					  
+					 System.out.println("ok");
+					  while(! message.equals("stop")){  
+					   System.out.println("Enter message: ");  
+					   message=br.readLine();
+					   Message m = site.createMessage(message);
+					   site.sendMessage(m);
+					   System.out.println("You sent : "+message+" to your neighbors");  
+					  }  
+					  
+					 br.close();  
+					 r.close(); 
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}  
+			}
+		}.run();
 	}
 
 }
