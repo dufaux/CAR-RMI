@@ -16,14 +16,6 @@ import rmi.graph.SiteGraphImpl;
 public class SiteGraphTest {
 
 	@Test
-	public void testSiteGraphImpl() throws RemoteException {
-		SiteGraph s1 = new SiteGraphImpl("site1");
-		SiteGraph s2 = new SiteGraphImpl("site2");
-		assertNotNull(s1);
-		assertNotNull(s2);
-	}
-
-	@Test
 	public void testSendAndReceiveMessage() throws RemoteException {
 		SiteGraph s1 = new SiteGraphImpl("site1");
 		SiteGraph s2 = new SiteGraphImpl("site2");
@@ -58,6 +50,8 @@ public class SiteGraphTest {
 		assertEquals(s1,s1);
 		assertEquals(s1,s3);
 		assertNotEquals(s1,s2);
+		
+		
 	}
     
 }

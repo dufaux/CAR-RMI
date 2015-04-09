@@ -38,7 +38,7 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 	@Override
 	public void sendMessage(final Message message) throws RemoteException {
 		for (final SiteGraph neighbor : this.neighbors) {
-			new Runnable() {
+			new Thread() {
 				@Override
 				public void run() {
 					try {
@@ -47,7 +47,7 @@ public class SiteGraphImpl extends UnicastRemoteObject implements SiteGraph{
 						throw new RuntimeException(e);
 					}
 				}
-			}.run();
+			}.start();
 		}
 	}
 

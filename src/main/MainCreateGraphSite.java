@@ -58,7 +58,7 @@ public class MainCreateGraphSite {
 				+ hostname + " \n"
 				+ "bound on local registry with this adress : " + rmiadd);
 
-		new Runnable() {
+		new Thread() {
 			@Override
 			public void run() {
 				try {
@@ -83,7 +83,7 @@ public class MainCreateGraphSite {
 					throw new RuntimeException(e);
 				}
 			}
-		}.run();
+		}.start();
 
 	}
 }

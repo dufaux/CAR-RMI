@@ -1,5 +1,11 @@
+
+
+#TP CAR RMI 
+
 Johan Dufaux
 Allan Rakotoarivony
+
+9 April 2015
 
 # Introduction
 
@@ -198,7 +204,14 @@ public void receiveMessage(Message message) throws RemoteException {
 }
 
 ```
-
+#Remarques
+Pour les tests, faire des tests du registry (en live), vrai test de RMI
+Runnable != Thread
+Throw nos propres exceptions ou des exceptions qui existent mais pas juste RuntimeException
+Bien nommer (init => createFromSpec)
+Si on override equals => override hashcode
+Expliquer en un paragraphe le design
+Pas de méthodes de plus de 10 lignes
 
 
 

@@ -59,7 +59,7 @@ public class MainCreateTreeSite {
 				"bound on local registry with this adress : "+rmiadd);
 		
 		
-		new Runnable() {
+		new Thread() {
 			@Override
 			public void run() {
 				 try {
@@ -83,7 +83,7 @@ public class MainCreateTreeSite {
 					throw new RuntimeException(e);
 				}  
 			}
-		}.run();
+		}.start();
 	}
 
 }

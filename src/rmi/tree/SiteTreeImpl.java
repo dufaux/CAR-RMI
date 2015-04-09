@@ -45,7 +45,7 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 		final Message messageToDiffuse = new MessageImpl(message.getInitiator(), this, message.getContent(),message.getTimestamp());
 
 		if (this.father != null && !this.father.equals(messageTree.getSender())) {
-			new Runnable() {
+			new Thread() {
 				@Override
 				public void run() {
 					try {
@@ -54,11 +54,12 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 						System.out.println(e.getMessage());
 					}
 				}
-			}.run();
+			}.start();
 		}
+		
 		for (final SiteTree son : this.sons) {
 			if (!son.equals(messageTree.getSender())) {
-				new Runnable() {
+				new Thread() {
 					@Override
 					public void run() {
 						try {
@@ -67,7 +68,7 @@ public class SiteTreeImpl extends UnicastRemoteObject implements SiteTree {
 							System.out.println(e.getMessage());
 						}
 					}
-				}.run();
+				}.start();
 			}
 		}
 

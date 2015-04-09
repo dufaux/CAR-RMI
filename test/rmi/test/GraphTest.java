@@ -39,8 +39,8 @@ public class GraphTest {
 		assertArrayEquals(new SiteGraph[]{s0},s1.getNeighbor());
 		assertArrayEquals(new SiteGraph[]{s1,s2},s0.getNeighbor());
 		
-		File file = new File("treetest.csv");
-		file.delete();
+		// we clean the file system
+		new File("treetest.csv").delete();
 	}
 
 }
