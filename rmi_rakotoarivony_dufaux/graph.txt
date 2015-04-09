@@ -1,4 +1,6 @@
 graph mygraph { 
-lanPC_1 -- lanPC_2;
-lanPC_2 -- lanPC_1;
+a13p3_1 -- a13p3_2;
+a13p3_2 -- a13p3_1;
+a13p3_2 -- a13p3_3;
+a13p3_3 -- a13p3_2;
 }
