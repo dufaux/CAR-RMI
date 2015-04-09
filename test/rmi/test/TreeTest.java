@@ -1,13 +1,13 @@
 package rmi.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -38,8 +38,9 @@ public class TreeTest {
 		
 		assertEquals(s0,s1.getFather());
 		assertEquals(s1,s3.getFather());
-		assertEquals(s1,s0.getSons()[0]);
-		assertEquals(s3,s1.getSons()[0]);
+		
+		assertArrayEquals(new SiteTree[]{s1,s2},s0.getSons());
+		assertArrayEquals(new SiteTree[]{s3},s1.getSons());
 		
 		File file = new File("treetest.csv");
 		file.delete();

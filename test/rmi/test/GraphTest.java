@@ -1,6 +1,6 @@
 package rmi.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,9 +13,6 @@ import org.junit.Test;
 import rmi.graph.Graph;
 import rmi.graph.SiteGraph;
 import rmi.graph.SiteGraphImpl;
-import rmi.tree.SiteTree;
-import rmi.tree.SiteTreeImpl;
-import rmi.tree.Tree;
 
 public class GraphTest {
 
@@ -39,9 +36,8 @@ public class GraphTest {
 		biggraph.add(s3);
 		biggraph.init("treetest.csv");
 		
-		assertEquals(s0,s1.getNeighbor()[0]);
-		assertEquals(s1,s0.getNeighbor()[0]);
-		assertEquals(s1,s0.getNeighbor()[1]);
+		assertArrayEquals(new SiteGraph[]{s0},s1.getNeighbor());
+		assertArrayEquals(new SiteGraph[]{s1,s2},s0.getNeighbor());
 		
 		File file = new File("treetest.csv");
 		file.delete();
