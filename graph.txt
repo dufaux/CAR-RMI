@@ -1,2 +1,6 @@
 graph mygraph { 
+lanPC_1 -- lanPC_2;
+lanPC_2 -- lanPC_1;
+lanPC_2 -- lanPC_3;
+lanPC_3 -- lanPC_2;
 }
