@@ -61,7 +61,7 @@ try {
 try {
 	neighbor.receiveMessage(message);
 } catch (RemoteException e) {
-	System.out.println(e.getMessage());
+	throw new RuntimeException(e);
 }
 ```
 
