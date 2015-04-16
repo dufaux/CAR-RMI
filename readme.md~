@@ -1,5 +1,11 @@
+
+
+#TP CAR RMI 
+
 Johan Dufaux
 Allan Rakotoarivony
+
+9 April 2015
 
 # Introduction
 
@@ -17,13 +23,13 @@ rmiregistry
 ```
 in main directory:
 ```
-java -jar createGraphSite // as much as we want
+java -jar createGraphSite.jar // as much as we want
 ```
 
 
 in one computer:
 ```
-java -jar createGraphNetwork nameofmachine1 nameofmachine2...
+java -jar createGraphNetwork.jar nameofmachine1 nameofmachine2...
 ```
 
 to send message:
@@ -61,7 +67,7 @@ try {
 try {
 	neighbor.receiveMessage(message);
 } catch (RemoteException e) {
-	System.out.println(e.getMessage());
+	throw new RuntimeException(e);
 }
 ```
 
@@ -198,7 +204,14 @@ public void receiveMessage(Message message) throws RemoteException {
 }
 
 ```
-
+#Remarques
+Pour les tests, faire des tests du registry (en live), vrai test de RMI
+Runnable != Thread
+Throw nos propres exceptions ou des exceptions qui existent mais pas juste RuntimeException
+Bien nommer (init => createFromSpec)  
+Si on override equals => override hashcode  
+Expliquer en un paragraphe le design  
+Pas de méthodes de plus de 10 lignes  
 
 
 
