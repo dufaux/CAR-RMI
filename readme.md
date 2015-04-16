@@ -14,6 +14,7 @@ Each computer on the network need to launch his own rmiregistry.
 Our program can have multiple site on multiple computer. After creating each site (as tree site or graph site), an other jar connect site together and they can send and receive message from their neighbors.
 
 ### launch the program
+You have to create bin directory from src. 
 
 Example for graph. Replace "graph" by "tree" if you want a tree.  
 For each computer:  
@@ -214,7 +215,9 @@ public void receiveMessage(Message message) throws RemoteException {
 }
 
 ```
-#Remarques
+
+
+#Remarques personelles apres evaluation
 Pour les tests, faire des tests du registry (en live), vrai test de RMI  
 Runnable != Thread  
 Throw nos propres exceptions ou des exceptions qui existent mais pas juste RuntimeException  
