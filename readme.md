@@ -14,8 +14,10 @@ Each computer on the network need to launch his own rmiregistry.
 Our program can have multiple site on multiple computer. After creating each site (as tree site or graph site), an other jar connect site together and they can send and receive message from their neighbors.
 
 ### launch the program
-For each computer:
 
+Example for graph. Replace "graph" by "tree" if you want a tree.  
+For each computer:  
+  
 in bin directory:
 ```
 stubgenerator.sh
@@ -27,10 +29,15 @@ java -jar createGraphSite.jar // as much as we want
 ```
 
 
-in one computer:
+in only one computer, after each node have been created:
 ```
 java -jar createGraphNetwork.jar nameofmachine1 nameofmachine2...
 ```
+the graph.txt file is automatically created to represent the network. you can create a graph image with:
+```
+dot -Tpng graph.txt -o network.png
+```
+
 
 to send message:
 in one computer:
@@ -38,6 +45,9 @@ in one computer:
 java -jar sendMessageFrom <pc_name> <machine_id>
 ```
 or write on the terminal of site.
+
+#### Informations
+graph.csv and tree.csv are the models used to create networks. (graph.png and tree.png are the representation of .csv files).
 
 # Design
 
